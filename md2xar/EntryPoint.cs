@@ -42,8 +42,11 @@ namespace md2xar
 
             foreach (string folder in Directory.GetDirectories(args[0]))
             {
-                Console.WriteLine($"Parsing: {folder}");
-                archive.Documents.AddRange(Parser.ParseFolder(folder, args[2], true, new List<string>()));
+                if (new DirectoryInfo(folder).Name != ".git")
+                {
+                    Console.WriteLine($"Parsing: {folder}");
+                    archive.Documents.AddRange(Parser.ParseFolder(folder, args[2], true, new List<string>()));
+                }
             }
 
             foreach (XarDocument document in archive.Documents)

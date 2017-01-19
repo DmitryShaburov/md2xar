@@ -20,10 +20,7 @@ namespace md2xar.Implementation
 
             foreach (string folder in Directory.GetDirectories(path))
             {
-                if (new DirectoryInfo(folder).Name != ".git")
-                {
-                    documents.AddRange(ParseFolder(folder, locale, true, subReference));
-                }
+                documents.AddRange(ParseFolder(folder, locale, true, subReference));
             }
 
             return documents;
